@@ -9,13 +9,30 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-        stage("Tomcat Dev Deploy"){
-            steps{
-                tomcatDeploy("172.31.30.174","ec2-user","tomcat-dev","doctor-online.war")
-            }
+        stage("develop branch"){
+           when{ branch 'develop'  }
+        step{
+                
+        echo "develop branch"
+    }
+        }
+         stage("test branch"){
+           when{ branch 'test'  }
+        step{
+                
+        echo "test branch"
+    }
+        } 
+        stage("main branch"){
+           when{ branch 'main'  }
+        step{
+                
+        echo "main branch"
+    
         }
     }
-    post {
+}    
+        post {
       success {
         cleanWs()
       }
