@@ -10,12 +10,20 @@ pipeline{
            steps{
               sshagent(['tomcat-dev']) {
                 // Copy war file to tomcat dev server
-                sh "scp -o StrictHostKeyChecking=no target/doctor-online.war ec2-user@172.31.19.43:/opt/tomcat9/webapps/"
+                sh "scp -o StrictHostKeyChecking=no target/doctor-online.war ec2-user@172.31.20.35:/opt/tomcat/webapps/"
                 // Restart tomcat server
-                sh "ssh ec2-user@172.31.19.43 /opt/tomcat9/bin/shutdown.sh"
-                sh "ssh ec2-user@172.31.19.43 /opt/tomcat9/bin/startup.sh"
+                sh "ssh ec2-user@172.31.20.35 /opt/tomcat/bin/shutdown.sh"
+                sh "ssh ec2-user@172.31.20.35 /opt/tomcat/bin/startup.sh"
               }
            } 
         }
     }
+
+post {
+  cleanup {
+    cleanWs()
+  }
 }
+}
+
+
