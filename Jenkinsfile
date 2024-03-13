@@ -14,7 +14,7 @@ pipeline{
                 // Restart tomcat server
                 sh "ssh ec2-user@172.31.20.35 /opt/tomcat/bin/shutdown.sh"
                 sh "ssh ec2-user@172.31.20.35 /opt/tomcat/bin/startup.sh"
-                  echo "hi"
+                  echo "umma"
               }
            } 
         }
