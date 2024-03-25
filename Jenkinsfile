@@ -6,7 +6,12 @@ pipeline{
                sh 'mvn package'
            } 
         }
-        stage("Dev Deploy"){
+        stage("Nexus artifactory upload"){
+           steps{
+         nexusArtifactUploader artifacts: [[artifactId: 'doctor-online', classifier: '', file: 'target/doctor-online.war', type: 'war']], credentialsId: '', groupId: 'in.javahome', nexusUrl: '172.31.45.174:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'do-release', version: '1.3'      
+           } 
+        }
+       stage("Dev Deploy"){
            steps{
               sshagent(['tomcat-dev']) {
                 // Copy war file to tomcat dev server
