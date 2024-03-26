@@ -16,7 +16,7 @@ pipeline {
                     def version = pom.version
                     def repoName = version.endsWith("SNAPSHOT") ? "do-snapshot": "do-release"
                     nexusArtifactUploader artifacts: [[artifactId: 'doctor-online', classifier: '', file: 'target/doctor-online.war', type: 'war']], 
-                        credentialsId: 'nexus3', 
+                        credentialsId: 'nexuus3', 
                         groupId: 'in.javahome', 
                         nexusUrl: '172.31.47.53:8081', 
                         nexusVersion: 'nexus3', 
