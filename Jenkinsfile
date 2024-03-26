@@ -19,8 +19,8 @@ pipeline{
             nexusUrl: '172.31.45.174:8081',
             nexusVersion: 'nexus3',
             protocol: 'http', 
-            repository: 'do-release',
-            version: '1.3'       
+            repository: reponame,
+            version: version     
            } 
         }
       }     
